@@ -1,10 +1,10 @@
 $(function(){
     $('div.menu-navbar a').on('click', function () {
         if ($('div.menu-panel').is(':visible')) {
-			$('div.menu-panel').removeClass('open');
-			$('div.menu-panel').addClass('close');
+			$('div.menu-panel').removeClass('open fadeOutLeft');
+			$('div.menu-panel').addClass('closes');
         } else {
-			$('div.menu-panel').addClass('open');
+			$('div.menu-panel').addClass('open fadeInLeft');
 			$('div.menu-panel').removeClass('close');
         };
 
@@ -14,7 +14,7 @@ $(function(){
 
 $(function(){
 	$('div.menu-panel ul li a').click(function(){
-		$('div.menu-panel').removeClass('open');
+		$('div.menu-panel').removeClass('open fadeOutLeft');
 		$('div.menu-panel').addClass('close');
 	});
 });

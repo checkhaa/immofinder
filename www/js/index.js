@@ -31,14 +31,6 @@ var app = {
         document.addEventListener('menubutton', this.onMenuKeyDown, false);
     },
 
-    onDeviceReady: function(){
-        app.splash('deviceready');
-    },
-
-    splash: function(){
-        navigator.splashscreen.hide();
-    },
-
     onMenuKeyDown: function(){
         app.menu('menubutton');
     },
