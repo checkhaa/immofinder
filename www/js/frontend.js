@@ -7,6 +7,10 @@ function close_menu_panel(){
     $('.menu-panel').animate({"margin-left": '-=220px'});
 }
 
+function close_menu_fast(){
+    $('.menu-panel').css({"margin-left": '-=220px'});
+}
+
 $(function(){
     $('.menu-navbar a').click(function(){
         if($('.menu-panel').css('margin-left') == '0px' && !$('.menu-panel').is(':animated')){
@@ -27,7 +31,7 @@ $(function(){
     });
 
     $('.menu-panel ul li a').click(function(){
-        close_menu_panel();
+        close_menu_fast();
     });
 });
 
