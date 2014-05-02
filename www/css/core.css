@@ -1,0 +1,76 @@
+.menu-navbar {
+	background-color: #3F5C9A;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid black;
+}
+
+.menu-navbar a {
+	color: #fff;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	display: block;
+	width: 100px;
+	text-align: center;
+	border-right: 1px solid #000;
+	text-decoration: none;
+}
+
+.menu-navbar a:hover {
+	background-color: #23355B;
+}
+
+.menu-panel {
+	position: fixed;
+	height: 100%;
+	top: 52px;
+	background-color: white;
+	padding: 10px;
+	border-right: 1px solid #ddd;
+	display: none;
+	z-index: 50;
+}
+
+.open {
+	display: block;
+}
+
+.menu-panel ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.menu-panel ul li {
+	border-bottom: 1px solid #ddd;
+}
+
+.menu-panel ul li.active > a{
+	color: darkorange;
+}
+
+.menu-panel ul li a {	
+	width: 200px;
+	display: block;
+	padding: 5px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #666;
+	font-weight: bold;
+}
+
+.marginright10 {
+	margin-right: 10px;
+}
+
+.margintop60 {
+	margin-top: 60px;
+}
+
+.tab-content {
+	padding-left: 10px;
+}
