@@ -41,12 +41,12 @@
 	height: 100%;
 	top: 52px;
 	background-color: white;
-	padding: 10px;
+
 	border-right: 1px solid #ddd;
-    left: 0px;
-    width:220px;
-	margin-left: -220px;
+    display: none;
 	z-index: 50;
+    margin:0;
+    padding: 0;
 }
 
 .menu-panel ul {
@@ -63,10 +63,10 @@
 	color: darkorange;
 }
 
-.menu-panel ul li a {	
-	width: 200px;
+.menu-panel ul li a {
 	display: block;
-	padding: 5px;
+	padding: 15px;
+    height: 50px;
 	text-transform: uppercase;
 	text-decoration: none;
 	color: #666;
