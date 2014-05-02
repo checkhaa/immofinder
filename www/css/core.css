@@ -28,7 +28,7 @@
 }
 
 .menu-title {
-    padding: 12px 10px 10px 10px;
+    padding: 17px 10px 10px 10px;
     color: #fff;
     font-weight: bold;
     text-transform: uppercase;
@@ -39,16 +39,14 @@
 .menu-panel {
 	position: fixed;
 	height: 100%;
-	top: 47px;
+	top: 52px;
 	background-color: white;
 	padding: 10px;
 	border-right: 1px solid #ddd;
-	display: none;
+    left: 0px;
+    width:220px;
+	margin-left: -220px;
 	z-index: 50;
-}
-
-.open {
-	display: block;
 }
 
 .menu-panel ul {
