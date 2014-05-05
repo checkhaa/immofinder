@@ -39,13 +39,13 @@
 .menu-panel {
 	position: fixed;
 	height: 100%;
-	top: 52px;
-	background-color: white;
-
-	border-right: 1px solid #ddd;
+	top: 53px;
+	background-color: #666;
+	border-right: 1px solid #000;
     display: none;
 	z-index: 50;
     margin:0;
+    box-shadow: 0 0 5px #888;
     padding: 0;
 }
 
@@ -56,7 +56,8 @@
 }
 
 .menu-panel ul li {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #000;
+
 }
 
 .menu-panel ul li.active > a{
@@ -69,8 +70,15 @@
     height: 50px;
 	text-transform: uppercase;
 	text-decoration: none;
-	color: #666;
+	color: #fff;
+    text-shadow: 0px 2px 2px #000000;
+    filter: dropshadow(color=#000000, offx= 0, offy=2);
 	font-weight: bold;
+}
+
+.nav>li>a:hover {
+    text-decoration: none;
+    background-color: #666;
 }
 
 .marginright10 {
