@@ -12,6 +12,19 @@ function close_menu_panel(){
 }
 
 $(function(){
+   $('body').touchwipe({
+       wipeLeft : function () {
+           alert("left");
+       },
+
+       wipeRight : function () {
+           alert("right");
+       },
+       preventDefaultEvents: true
+   })
+});
+
+$(function(){
     $('.menu-navbar a').click(function(){
         if($('.menu-panel').is(':visible')){
             close_menu_panel();
