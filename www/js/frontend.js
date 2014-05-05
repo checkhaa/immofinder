@@ -28,8 +28,22 @@ $(function(){
 
     $('.menu-panel ul li a').click(function(){
         $('.menu-panel').hide(0);
+        var containerId = $(this).attr('href');
+        var self = $(this);
+        var url = self.attr('data-tab-url');
+        $.ajax({
+            url : url,
+            beforeSend : function(){
+                $('#loading').show();
+            },
+            complete : function(){
+                $('#loading').hide();
+            },
+            success : function(data){
+                $(containerId).html(data);
+            }
+        })
     });
-
 });
 
 // Beim zurückklicken auf die vorherige Seite springen

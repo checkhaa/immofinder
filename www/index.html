@@ -17,15 +17,19 @@
         </div>
         <div class="menu-panel animated">
             <ul class="nav">
-                <li class="active"><a href="#search-start" data-toggle="tab"><span class="glyphicon glyphicon-search marginright10"></span>Suche</a></li>
-                <li><a href="#search-listing" data-toggle="tab"><span class="glyphicon glyphicon-bookmark marginright10"></span>Gespeicherte Suche</a></li>
+                <li class="active"><a href="#search-start" data-toggle="tab" data-tab-url="http://immofinder.vmd3618.checkzz.de/www/page/page.search-start.php" id="specialTab"><span class="glyphicon glyphicon-search marginright10"></span>Suche</a></li>
+                <li><a href="#search-listing" data-toggle="tab" data-tab-url="http://immofinder.vmd3618.checkzz.de//www/page/page.saved-search.php" id="specialTab"><span class="glyphicon glyphicon-bookmark marginright10"></span>Gespeicherte Suche</a></li>
             </ul>
         </div>
 
         <div class="clearfix margintop60"></div>
         <div class="tab-content">
-            <div class="tab-pane active animated fadeIn" id="search-start">Search - Start <br /></div>
-            <div class="tab-pane animated fadeIn" id="search-listing">Search - Listing</div>
+            <div class="tab-pane active animated fadeIn" id="search-start"></div>
+            <div class="tab-pane animated fadeIn" id="search-listing" class="center-block"></div>
+            <div style="width: 100%" id="loading">
+                <img src="img/loading.gif" alt="loading..." style="margin-bottom: 10px"/> <br />
+                <strong>WIRD GELADEN...</strong>
+            </div>
         </div>
 
         <script type="text/javascript" src="../platforms/android/platform_www/cordova.js"></script>

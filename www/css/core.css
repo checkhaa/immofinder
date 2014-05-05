@@ -92,3 +92,9 @@
 .tab-content {
 	padding-left: 10px;
 }
+
+#loading {
+    display: none;
+    text-align: center;
+    margin-top: 150px;
+}
