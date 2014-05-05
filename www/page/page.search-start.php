@@ -23,8 +23,8 @@ for($i = 0; $i < $sizeimmo; $i++){
     $titel = $array['resultlistEntries']['resultlistEntry'][$i]['resultlist:realEstate']['title'];
     $picture = $array['resultlistEntries']['resultlistEntry'][$i]['resultlist:realEstate']['titlePicture']['urls']['url'][1]['@attributes']['href'];
     echo '
-            <div>
-                <div class="crop-image-small"><img src="'.$picture.'" /></div>
+            <div class="immo-list">
+                <div class="image-cropper"><img src="'.$picture.'"  style="height: 140x" /></div>
             </div>
           ';
 }

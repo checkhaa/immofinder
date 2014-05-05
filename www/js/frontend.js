@@ -99,12 +99,3 @@ $(function(){
         }
     })
 });
-
-// Image crop
-$(document).ready(function() {
-    $('.crop-image img').resizecrop({
-        width : 100,
-        height :  80,
-        vertical : "top"
-    });
-});
