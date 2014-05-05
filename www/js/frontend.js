@@ -12,16 +12,13 @@ function close_menu_panel(){
 }
 
 $(function(){
-   $('body').touchwipe({
-       wipeLeft : function () {
-           alert("left");
-       },
+     $("html").swiperight(function() {
+        alert("right");
+     });
 
-       wipeRight : function () {
-           alert("right");
-       },
-       preventDefaultEvents: true
-   })
+     $("html").swipeleft(function() {
+        alert("left");
+     });
 });
 
 $(function(){
