@@ -7,6 +7,7 @@
 	margin: 0;
 	padding: 0;
 	border-bottom: 1px solid black;
+    z-index: 50;
 }
 
 .menu-navbar a {
@@ -39,7 +40,7 @@
 .menu-panel {
 	position: fixed;
 	height: 100%;
-	top: 53px;
+	top: 52px;
 	background-color: #666;
 	border-right: 1px solid #000;
     display: none;
@@ -85,8 +86,8 @@
 	margin-right: 10px;
 }
 
-.margintop60 {
-	margin-top: 60px;
+.margintop53 {
+	margin-top: 53px;
 }
 
 .tab-content {
@@ -97,4 +98,12 @@
     display: none;
     text-align: center;
     margin-top: 150px;
+}
+
+div.ui-loader {
+    display: none;
+}
+
+.tab-content {
+    padding-left: 0px;
 }

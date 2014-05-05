@@ -13,11 +13,11 @@ function close_menu_panel(){
 
 $(function(){
      $("html").swiperight(function() {
-        alert("right");
+        open_menu_panel();
      });
 
-     $("html").swipeleft(function() {
-        alert("left");
+     $(".menu-panel").swipeleft(function() {
+        close_menu_panel();
      });
 });
 
@@ -81,3 +81,30 @@ var getLocation = function() {
     };
     navigator.geolocation.getCurrentPosition(suc, locFail);
 };
+
+// Beim öffnen der App erste seite laden
+$(function(){
+    var containerId = '#search-start';
+    var url = 'http://immofinder.vmd3618.checkzz.de/www/page/page.search-start.php';
+    $.ajax({
+        url : url,
+        beforeSend : function(){
+            $('#loading').show();
+        },
+        complete : function(){
+            $('#loading').hide();
+        },
+        success : function(data){
+            $(containerId).html(data);
+        }
+    })
+});
+
+// Image crop
+$(document).ready(function() {
+    $('.crop-image img').resizecrop({
+        width : 100,
+        height :  80,
+        vertical : "top"
+    });
+});
