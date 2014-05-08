@@ -12,16 +12,6 @@ function close_menu_panel(){
 }
 
 $(function(){
-     $("html").swiperight(function() {
-        open_menu_panel();
-     });
-
-     $(".menu-panel").swipeleft(function() {
-        close_menu_panel();
-     });
-});
-
-$(function(){
     $('.menu-navbar a').click(function(){
         if($('.menu-panel').is(':visible')){
             close_menu_panel();
@@ -36,23 +26,31 @@ $(function(){
         close_menu_panel();
     });
 
-    $('.menu-panel ul li a').click(function(){
-        $('.menu-panel').hide(0);
+    $('a#specialA').click(function(){
+
+        if($('.menu-panel').is(':visible')){
+            close_menu_panel();
+        }
+
         var containerId = $(this).attr('href');
         var self = $(this);
-        var url = self.attr('data-tab-url');
-        $.ajax({
-            url : url,
-            beforeSend : function(){
-                $('#loading').show();
-            },
-            complete : function(){
-                $('#loading').hide();
-            },
-            success : function(data){
-                $(containerId).html(data);
-            }
-        })
+        var url = self.attr('data-url');
+
+        if($(containerId).is(':visible')){
+            return false;
+        } else {
+
+            $(document).ajaxStart(function(){
+                $(containerId).html('<div id="loading"><img src="img/loading.gif" style="margin-bottom: 10px"/> <br /><strong>WIRD GELADEN...</strong></div>');
+            });
+
+            $.ajax({
+                url : url,
+                success : function(data){
+                    $(containerId).html(data);
+                }
+            });
+        }
     });
 });
 
@@ -82,20 +80,19 @@ var getLocation = function() {
     navigator.geolocation.getCurrentPosition(suc, locFail);
 };
 
-// Beim öffnen der App erste seite laden
 $(function(){
     var containerId = '#search-start';
     var url = 'http://immofinder.vmd3618.checkzz.de/www/page/page.search-start.php';
+
+    $(document).ajaxStart(function(){
+        $(containerId).html('<div id="loading"><img src="img/loading.gif" style="margin-bottom: 10px"/> <br /><strong>WIRD GELADEN...</strong></div>');
+    });
+
     $.ajax({
         url : url,
-        beforeSend : function(){
-            $('#loading').show();
-        },
-        complete : function(){
-            $('#loading').hide();
-        },
         success : function(data){
             $(containerId).html(data);
         }
-    })
-});
+    });
+
+})

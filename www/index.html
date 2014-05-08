@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
+     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/animate.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.ui.css" />
         <link rel="stylesheet" type="text/css" href="css/core.css" />
+
+
+        <script type="text/javascript" src="../platforms/android/platform_www/cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">app.initialize();</script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.ui.min.js"></script>
+        <script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/frontend.js"></script>
+
         <title>ImmoFinder</title>
     </head>
     <body>
@@ -17,30 +29,24 @@
         </div>
         <div class="menu-panel animated">
             <ul class="nav">
-                <li class="active"><a href="#search-start" data-toggle="tab" data-tab-url="http://immofinder.vmd3618.checkzz.de/www/page/page.search-start.php" id="specialTab"><span class="glyphicon glyphicon-search marginright10"></span>Suche</a></li>
-                <li><a href="#search-listing" data-toggle="tab" data-tab-url="http://immofinder.vmd3618.checkzz.de//www/page/page.saved-search.php" id="specialTab"><span class="glyphicon glyphicon-bookmark marginright10"></span>Gespeicherte Suche</a></li>
+                <li class="active"><a href="#search-start" id="specialA" data-url="http://immofinder.vmd3618.checkzz.de/www/page/page.search-start.php"><span class="glyphicon glyphicon-search marginright10"></span>Suche</a></li>
+                <li><a href="#search-saved" id="specialA" data-url="http://immofinder.vmd3618.checkzz.de/www/page/page.search-saved.php"><span class="glyphicon glyphicon-bookmark marginright10"></span>Gespeicherte Suchen</a></li>
             </ul>
         </div>
 
         <div class="clearfix margintop53"></div>
-        <div class="tab-content">
-            <div class="tab-pane active animated fadeIn" id="search-start"></div>
-            <div class="tab-pane animated fadeIn" id="search-listing" class="center-block"></div>
-            <div style="width: 100%" id="loading">
-                <img src="img/loading.gif" style="margin-bottom: 10px"/> <br />
-                <strong>WIRD GELADEN...</strong>
-            </div>
-        </div>
 
-        <script type="text/javascript" src="../platforms/android/platform_www/cordova.js"></script>
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile.js"></script>
-        <script type="text/javascript" src="js/crop.image.js"></script>
-        <script type="text/javascript" src="js/frontend.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+            <div class="tab-content">
+                <!--- Start Suche --->
+                <div class="tab-pane animated fadeIn active" id="search-start"></div>
+
+                <!--- Gespeicherte Suche --->
+                <div class="tab-pane animated fadeIn" id="search-saved"></div>
+
+                <!--- Suche Listing --->
+                <div class="tab-pane animated fadeIn" id="search-list"></div>
+
+            </div>
+
     </body>
 </html>

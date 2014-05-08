@@ -9,7 +9,9 @@
         Ahmet Guerer
     </author>
 
-	<preference name="loglevel" value="DEBUG" />
+    <preference name="DisallowOverscroll" value="true"/>
+    <preference name="loglevel" value="DEBUG" />
+
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
