@@ -150,11 +150,12 @@ div.ui-loader {
 .immo-features {
     position: absolute;
     background-color: #fff;
-    opacity: .7;
+    opacity: .9;
     bottom: 0;
     z-index: 10;
     padding: 5px;
     color: #000;
     width: 100%;
     min-height: 100px;
+    font-family: 'Open Sans Condensed', sans-serif;
 }

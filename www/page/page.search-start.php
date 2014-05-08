@@ -1,21 +1,6 @@
-<script>
-// Radius Trigger Slider
-$(function() {
-    $( "#slider-range-min" ).slider({
-        range: "min",
-        value: 5,
-        min: 1,
-        max: 50,
-        slide: function( event, ui ) {
-            $( "#radius" ).val( "Radius: " + ui.value + " km");
-        }
-    });
-    $( "#radius" ).val( "Radius: " + $( "#slider-range-min" ).slider( "value" ) + " km" );
-});
-</script>
-
+<script type="text/javascript" src="http://immofinder.vmd3618.checkzz.de/www/js/backend.js"></script>
 <div style="padding: 20px" class="center-block">
-    <form method="GET" action="?search-list">
+    <form method="GET" action="#search-list" id="search-form">
         <div class="input-group marginbottom10">
             <span class="input-group-addon"><strong>Wo:</strong></span>
             <input type="text" class="form-control own-control" name="search-where" placeholder="ORT / PLZ" value=""/>
@@ -28,5 +13,6 @@ $(function() {
             <span class="input-group-addon"><strong>Was:</strong></span>
             <input type="text" class="form-control own-control" id="apartmentbuy" name="search-what" value="Wohnung kaufen" placeholder="" />
         </div>
+        <input type="submit" name="find-immos" class="btn btn-success center-block" value="FINDEN" />
     </form>
 </div>

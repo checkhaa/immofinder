@@ -25,6 +25,7 @@ $sizeimmo = sizeof($array['resultlistEntries']['resultlistEntry']);
 //echo "</pre>";
 
 
+
 for($i = 0; $i < $sizeimmo; $i++){
     $titel = $array['resultlistEntries']['resultlistEntry'][$i]['resultlist:realEstate']['title'];
     $postcode = $array['resultlistEntries']['resultlistEntry'][$i]['resultlist:realEstate']['address']['postcode'];
@@ -32,7 +33,16 @@ for($i = 0; $i < $sizeimmo; $i++){
     $picture = $array['resultlistEntries']['resultlistEntry'][$i]['resultlist:realEstate']['titlePicture']['urls']['url'][3]['@attributes']['href'];
 
     $search_pic = array('%WIDTH%', '%HEIGHT%');
-    $replace_with = array('300', '200');
+    $replace_with = array('250', '200');
     $replace_picture = str_replace($search_pic, $replace_with, $picture);
+
+    echo '
+            <div class="col-lg-1" style="padding: 5px">
+                <div class="immo-features"><span style="font-size: 13px; font-weight: bold">'.sub_string($titel, 50).'</span></div>
+                <img src="'.$replace_picture.'" style="width: 100%">
+            </div>
+         ';
+
 }
+
 ?>
