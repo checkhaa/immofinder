@@ -29,7 +29,10 @@ $(function(){
     });
 
     // Wenn im Panel eine Spezielle a Klasse geklickt wird
-    $('a#specialA').click(function(){
+    $('ul.nav li').click(function(){
+
+        $('ul.nav li').removeClass('active');
+        $(this).addClass('active');
 
         // Schließe zuerst das Menüpanel
         if($('.menu-panel').is(':visible')){
@@ -37,7 +40,9 @@ $(function(){
         }
 
         // Ermittle von dem geklickten a Tag die ID für den Tab Content
-        var containerId = $(this).attr('href');
+        var containerId = $(this).parent('a').attr('href');
+
+        alert(containerId);
 
         // Ermittle die URL für den Ajax Request
         var self = $(this);
