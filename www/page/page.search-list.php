@@ -38,9 +38,9 @@ for($i = 0; $i < $sizeimmo; $i++){
     $replace_picture = str_replace($search_pic, $replace_with, $picture);
 
     echo '
-            <div class="col-md-6" id="mode" style="padding: 5px">
+            <div class="col-md-6" id="mode" style="margin-bottom: 10px; margin-top: 10px">
                 <div class="immo-features" style=""><span style="font-size: 13px; font-weight: bold">'.sub_string($titel, 20).'</span></div>
-                <img src="'.$replace_picture.'" style="width: 100%">
+                '.($replace_picture ? '<img src="'.$replace_picture.'" style="width: 100%; border-top: 1px solid black">' : '<img src="http://immofinder.vmd3618.checkzz.de/www/img/no-pic.jpg" style="width: 100%;  border-top: 1px solid black"/>').'
             </div>
          ';
 

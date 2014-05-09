@@ -152,10 +152,11 @@ div.ui-loader {
     position: absolute;
     background-color: #fff;
     opacity: .9;
-    bottom: 5px;
+    bottom: 0;
     z-index: 10;
     padding: 5px;
     color: #000;
     min-height: 70px;
     font-family: 'Open Sans Condensed', sans-serif;
+    border-bottom: 1px solid black;
 }
