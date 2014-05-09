@@ -16,7 +16,7 @@ $oImmocaster->setRequestUrl('live');
 $pageNumber = ($_GET['page_number'] ? $_GET['page_number'] : '1');
 
 // Objekte holen
-$aParameter = array('geocoordinates'=>'50.0954;12.2196;17', 'realestatetype' => 'apartmentbuy', 'pagenumber' => $pageNumber);
+$aParameter = array('geocoordinates'=>'50.0954;12.2196;30', 'realestatetype' => 'apartmentbuy', 'pagenumber' => $pageNumber);
 $res        = $oImmocaster->radiusSearch($aParameter);
 $array = xmlstr_to_array($res);
 
@@ -51,6 +51,7 @@ echo '<div class="scroll">';
              ';
     }
 
+    // Immobilien nachladen
     $getPage = $array['paging']['pageNumber'] + 1;
     if($getPage <= $numberOfPages){
         echo "  <script>
