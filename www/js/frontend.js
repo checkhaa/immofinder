@@ -124,8 +124,7 @@ $(function(){
     // Url ermitteln
     var url = 'http://immofinder.vmd3618.checkzz.de/www/page/page.search-start.php';
 
-    // Wenn Container Variable auf visible / angezeigt steht dann Führe Ajax Request aus
-    if($(containerId).is(':visible')){
+
 
         // Führe Ajax Request
         $.ajax({
@@ -134,10 +133,8 @@ $(function(){
                 $(containerId).html(data);
             }
         });
-    } else {
-        return false;
-    }
-})
+
+});
 
 $(document).ajaxStart(function(){
     $('.loader').show();

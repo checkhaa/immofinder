@@ -57,7 +57,8 @@ echo '<div class="scroll">';
                     $(function(){
                         $('.scroll').jscroll({
                             loadingHtml: '',
-                            autoTrigger: true
+                            autoTrigger: true,
+                            padding: 10
                         });
                     });
                 </script>
