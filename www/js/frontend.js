@@ -42,8 +42,6 @@ $(function(){
         // Ermittle von dem geklickten a Tag die ID für den Tab Content
         var containerId = $(this).parent('a').attr('href');
 
-        alert(containerId);
-
         // Ermittle die URL für den Ajax Request
         var self = $(this);
         var url = self.attr('data-url');
