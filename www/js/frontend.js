@@ -1,3 +1,11 @@
+$(document).ajaxStart(function(){
+    $('.loader').show();
+});
+
+$(document).ajaxStop(function(){
+    $('.loader').hide(0);
+});
+
 // Menu Panel
 function open_menu_panel(){
     $('.menu-panel').removeClass('slideOutLeft');
@@ -34,37 +42,6 @@ $(function(){
         $('ul.nav li').removeClass('active');
         $(this).addClass('active');
 
-        // Schließe zuerst das Menüpanel
-        if($('.menu-panel').is(':visible')){
-            close_menu_panel();
-        }
-
-        // Ermittle von dem geklickten a Tag die ID für den Tab Content
-        var containerId = $(this).parent('a').attr('href');
-
-        // Ermittle die URL für den Ajax Request
-        var self = $(this);
-        var url = self.attr('data-url');
-
-        // Wenn der div der ID containerId auf sichtbar steht nichts unternehmen
-        if($(containerId).is(':visible')){
-            return false;
-        } else {
-
-            // Wenn es unsichtbar ist dann alle activen Klassen auf Tab-pane löschen
-            $('.tab-pane').removeClass('active');
-
-            // die ermittlte div ID auf activ stellen
-            $(containerId).addClass('active');
-
-            // Ajax Request ausführen
-            $.ajax({
-                url : url,
-                success : function(data){
-                    $(containerId).html(data);
-                }
-            });
-        }
     });
 });
 
@@ -85,6 +62,7 @@ $(function() {
 
         // Lösche alle aktiven Tabs
         $('.tab-pane').removeClass('active');
+        $('.tab-pane').html('');
 
         // Füge der Hash Div id die Klasse aktiv hinzu
         $(hash).addClass('active');
@@ -115,6 +93,7 @@ var getLocation = function() {
     navigator.geolocation.getCurrentPosition(suc, locFail);
 };
 
+
 // Beim Starten der Anwendung erste Seite laden
 $(function(){
 
@@ -124,22 +103,11 @@ $(function(){
     // Url ermitteln
     var url = 'http://immofinder.vmd3618.checkzz.de/www/page/page.search-start.php';
 
-
-
-        // Führe Ajax Request
-        $.ajax({
-            url : url,
-            success : function(data){
-                $(containerId).html(data);
-            }
-        });
-
-});
-
-$(document).ajaxStart(function(){
-    $('.loader').show();
-});
-
-$(document).ajaxStop(function(){
-    $('.loader').hide();
+    // Führe Ajax Request
+    $.ajax({
+        url : url,
+        success : function(data){
+            $(containerId).html(data);
+        }
+    });
 });
