@@ -27,10 +27,6 @@ $(function(){
        var containerId = '#search-list';
        var url = 'http://immofinder.vmd3618.checkzz.de/www/page/page.search-list.php';
 
-       $(document).ajaxStart(function(){
-           $(containerId).html('<div id="loading"><img src="img/loading.gif" style="margin-bottom: 10px"/> <br /><strong>WIRD GELADEN...</strong></div>');
-       });
-
        $.ajax({
            url : url,
            success : function(data){
@@ -52,6 +48,19 @@ $(window).resize( function(){
         // Portrait
         $('div#mode').attr('class', 'col-md-6');
     }
+});
+
+$(function(){
+        var height = $(window).height();
+        var width = $(window).width();
+
+        if(width > height) {
+            // Landscape
+            $('div#mode').attr('class', 'col-xs-6');
+        } else {
+            // Portrait
+            $('div#mode').attr('class', 'col-md-6');
+        }
 });
 
 $(window).resize( function(){

@@ -57,11 +57,6 @@ $(function(){
             // die ermittlte div ID auf activ stellen
             $(containerId).addClass('active');
 
-            // Loader laden
-            $(document).ajaxStart(function(){
-                $(containerId).html('<div id="loading"><img src="img/loading.gif" style="margin-bottom: 10px"/> <br /><strong>WIRD GELADEN...</strong></div>');
-            });
-
             // Ajax Request ausführen
             $.ajax({
                 url : url,
@@ -96,11 +91,6 @@ $(function() {
 
         // Wenn der div visible / angezeigt steht Führe Ajax Request aus
         if($(hash).is(':visible')){
-
-            // Lade einen loader
-            $(document).ajaxStart(function(){
-                $(hash).html('<div id="loading"><img src="img/loading.gif" style="margin-bottom: 10px"/> <br /><strong>WIRD GELADEN...</strong></div>');
-            });
 
             // Führe das Request aus
             $.ajax({
@@ -137,11 +127,6 @@ $(function(){
     // Wenn Container Variable auf visible / angezeigt steht dann Führe Ajax Request aus
     if($(containerId).is(':visible')){
 
-        // Lade in den Dokument ein loader
-        $(document).ajaxStart(function(){
-            $(containerId).html('<div id="loading"><img src="img/loading.gif" style="margin-bottom: 10px"/> <br /><strong>WIRD GELADEN...</strong></div>');
-        });
-
         // Führe Ajax Request
         $.ajax({
             url : url,
@@ -153,3 +138,11 @@ $(function(){
         return false;
     }
 })
+
+$(document).ajaxStart(function(){
+    $('.loader').show();
+});
+
+$(document).ajaxStop(function(){
+    $('.loader').hide();
+});

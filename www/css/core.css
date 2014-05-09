@@ -160,3 +160,7 @@ div.ui-loader {
     font-family: 'Open Sans Condensed', sans-serif;
     border-bottom: 1px solid black;
 }
+
+.loader {
+    margin-bottom: 50px;
+}
