@@ -12,6 +12,8 @@ function close_menu_panel(){
 }
 
 $(function(){
+
+    // Funktion für das ein und ausklappen der Menüleiste
     $('.menu-navbar a').click(function(){
         if($('.menu-panel').is(':visible')){
             close_menu_panel();
@@ -26,24 +28,38 @@ $(function(){
         close_menu_panel();
     });
 
+    // Wenn im Panel eine Spezielle a Klasse geklickt wird
     $('a#specialA').click(function(){
 
+        // Schließe zuerst das Menüpanel
         if($('.menu-panel').is(':visible')){
             close_menu_panel();
         }
 
+        // Ermittle von dem geklickten a Tag die ID für den Tab Content
         var containerId = $(this).attr('href');
+
+        // Ermittle die URL für den Ajax Request
         var self = $(this);
         var url = self.attr('data-url');
 
+        // Wenn der div der ID containerId auf sichtbar steht nichts unternehmen
         if($(containerId).is(':visible')){
             return false;
         } else {
 
+            // Wenn es unsichtbar ist dann alle activen Klassen auf Tab-pane löschen
+            $('.tab-pane').removeClass('active');
+
+            // die ermittlte div ID auf activ stellen
+            $(containerId).addClass('active');
+
+            // Loader laden
             $(document).ajaxStart(function(){
                 $(containerId).html('<div id="loading"><img src="img/loading.gif" style="margin-bottom: 10px"/> <br /><strong>WIRD GELADEN...</strong></div>');
             });
 
+            // Ajax Request ausführen
             $.ajax({
                 url : url,
                 success : function(data){
@@ -60,12 +76,38 @@ $(function() {
         history.pushState(null, null, $(this).attr('href'));
     });
 
+    // Wenn Window zurückgeklickt wird aktion ausführen
     window.addEventListener("popstate", function(e) {
-        var activeTab = $('[href=' + location.hash + ']');
-        if (activeTab.length) {
-            activeTab.tab('show');
+
+        // Hole letzten Hash aus der URL
+        var hash = window.location.hash;
+
+        // Ermittle die Url von der Hash ID
+        var url = $(hash).attr('data-tab-url');
+
+        // Lösche alle aktiven Tabs
+        $('.tab-pane').removeClass('active');
+
+        // Füge der Hash Div id die Klasse aktiv hinzu
+        $(hash).addClass('active');
+
+        // Wenn der div visible / angezeigt steht Führe Ajax Request aus
+        if($(hash).is(':visible')){
+
+            // Lade einen loader
+            $(document).ajaxStart(function(){
+                $(hash).html('<div id="loading"><img src="img/loading.gif" style="margin-bottom: 10px"/> <br /><strong>WIRD GELADEN...</strong></div>');
+            });
+
+            // Führe das Request aus
+            $.ajax({
+                url : url,
+                success : function(data){
+                    $(hash).html(data);
+                }
+            });
         } else {
-            $('.nav a:first').tab('show');
+            return false;
         }
     });
 });
@@ -80,19 +122,31 @@ var getLocation = function() {
     navigator.geolocation.getCurrentPosition(suc, locFail);
 };
 
+// Beim Starten der Anwendung erste Seite laden
 $(function(){
+
+    // Container Variable ermitteln
     var containerId = '#search-start';
+
+    // Url ermitteln
     var url = 'http://immofinder.vmd3618.checkzz.de/www/page/page.search-start.php';
 
-    $(document).ajaxStart(function(){
-        $(containerId).html('<div id="loading"><img src="img/loading.gif" style="margin-bottom: 10px"/> <br /><strong>WIRD GELADEN...</strong></div>');
-    });
+    // Wenn Container Variable auf visible / angezeigt steht dann Führe Ajax Request aus
+    if($(containerId).is(':visible')){
 
-    $.ajax({
-        url : url,
-        success : function(data){
-            $(containerId).html(data);
-        }
-    });
+        // Lade in den Dokument ein loader
+        $(document).ajaxStart(function(){
+            $(containerId).html('<div id="loading"><img src="img/loading.gif" style="margin-bottom: 10px"/> <br /><strong>WIRD GELADEN...</strong></div>');
+        });
 
+        // Führe Ajax Request
+        $.ajax({
+            url : url,
+            success : function(data){
+                $(containerId).html(data);
+            }
+        });
+    } else {
+        return false;
+    }
 })

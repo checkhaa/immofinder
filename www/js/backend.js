@@ -15,6 +15,9 @@ $(function() {
 $(function(){
    $('form#search-form').submit(function(){
 
+       // Füge ein Hash an die URL
+       history.pushState(null, null, '#search-list');
+
        // Alle divs im Tab ausblenden
        $('.tab-pane').removeClass('active');
 
@@ -36,4 +39,27 @@ $(function(){
        });
        return false;
    });
+});
+
+$(window).resize( function(){
+    var height = $(window).height();
+    var width = $(window).width();
+
+    if(width > height) {
+        // Landscape
+        $('div#mode').attr('class', 'col-xs-6');
+    } else {
+        // Portrait
+        $('div#mode').attr('class', 'col-md-6');
+    }
+});
+
+$(window).resize( function(){
+    var width = $('div#mode img').width();
+    $('div.immo-features').attr('style', 'width: '+width+'px');
+});
+
+$(function(){
+    var width = $('div#mode img').width();
+    $('div.immo-features').attr('style', 'width: '+width+'px');
 });

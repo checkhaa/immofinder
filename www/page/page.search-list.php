@@ -1,3 +1,4 @@
+<script type="text/javascript" src="http://immofinder.vmd3618.checkzz.de/www/js/backend.js"></script>
 <?php
 // Funktionen einbinden
 require_once('/home/www/immofinder/www/lib/functions/functions.php');
@@ -33,12 +34,12 @@ for($i = 0; $i < $sizeimmo; $i++){
     $picture = $array['resultlistEntries']['resultlistEntry'][$i]['resultlist:realEstate']['titlePicture']['urls']['url'][3]['@attributes']['href'];
 
     $search_pic = array('%WIDTH%', '%HEIGHT%');
-    $replace_with = array('250', '200');
+    $replace_with = array('250', '150');
     $replace_picture = str_replace($search_pic, $replace_with, $picture);
 
     echo '
-            <div class="col-lg-1" style="padding: 5px">
-                <div class="immo-features"><span style="font-size: 13px; font-weight: bold">'.sub_string($titel, 50).'</span></div>
+            <div class="col-md-6" id="mode" style="padding: 5px">
+                <div class="immo-features" style=""><span style="font-size: 13px; font-weight: bold">'.sub_string($titel, 20).'</span></div>
                 <img src="'.$replace_picture.'" style="width: 100%">
             </div>
          ';
