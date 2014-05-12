@@ -182,5 +182,19 @@ div.ui-loader {
     padding: 10px;
     border-top: 1px solid black;
     box-shadow: 0 0 5px #888;
-    z-index: 99;
+    z-index: 999;
+}
+
+.realTorLogo {
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    border-right: none;
+    top: 0px;
+    right: 15px;
+    color: darkred;
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom-left-radius: 3px;
+    box-shadow: inner 0 0 5px #888;
 }

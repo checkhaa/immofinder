@@ -38,6 +38,9 @@
         },
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "ImmoFinder"
+        },
+        "org.apache.cordova.dialogs": {
+            "PACKAGE_NAME": "ImmoFinder"
         }
     },
     "dependent_plugins": {}

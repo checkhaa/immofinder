@@ -39,11 +39,11 @@ $(function(){
 });
 
 $(window).resize( function(){
-    var width = $('div#mode img').width();
+    var width = $('div#mode img.lazy').width();
     $('div.immo-features').attr('style', 'width: '+width+'px');
 });
 
 $(function(){
-    var width = $('div#mode img').width();
+    var width = $('div#mode img.lazy').width();
     $('div.immo-features').attr('style', 'width: '+width+'px');
 });

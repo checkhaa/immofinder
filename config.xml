@@ -9,4 +9,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+
+    <plugin name="Geolocation" value="org.apache.cordova.GeoBroker" />
+    <plugin name="Geolocation" value="CDVLocation" />
 </widget>

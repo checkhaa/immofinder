@@ -122,6 +122,7 @@ $(function(){
 	});
 });
 
+
 //---- Autocomplete funktion für die Orte -----
 $(function() {
     var termTemplate = "<span class='ui-autocomplete-term'>%s</span>";
@@ -146,3 +147,69 @@ $(function() {
         }
     });
 });
+
+// Geo Location
+var geocoder;
+
+$(document).ready(function() {
+    geocoder = new google.maps.Geocoder();
+
+    $('span.get-location').click(function(){
+        navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionError);
+    });
+
+    navigator.geolocation.getCurrentPosition(onGetCurrentPositionSuccess, onGetCurrentPositionError);
+});
+
+var onGetCurrentPositionSuccess = function(position) {
+    console.log("lat: " + position.coords.latitude);
+    console.log("long: " + position.coords.longitude);
+    var lat = parseFloat(position.coords.latitude);
+    var lng = parseFloat(position.coords.longitude);
+    var latlng = new google.maps.LatLng(lat, lng);
+
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+                var postal_code = '';
+                var street_number = '';
+                var city = '';
+                var street = '';
+                var arrAddress = results[0].address_components;
+                // iterate through address_component array
+                $.each(arrAddress, function (i, address_component) {
+                    console.log(address_component.types[0]);
+                    if (address_component.types[0] == "postal_code") {
+                        postal_code += address_component.long_name;
+                    }
+
+                    if (address_component.types[0] == "street_number") {
+                        street_number += address_component.long_name;
+                    }
+
+                    if (address_component.types[0] == "locality") {
+                        city += address_component.long_name;
+                    }
+
+                    if (address_component.types[0] == "route") {
+                        street += address_component.long_name;
+                    }
+
+                    console.log(postal_code + street_number + city + street);
+
+                    $('input[name=search-where]').val(postal_code + ' ' + street + ' ' + street_number + ' ' + city );
+
+                    return false;
+                });
+            } else {
+                alert("Ort nicht gefunden");
+            }
+        } else {
+            alert("Geocoder failed due to: " + status);
+        }
+    });
+}
+
+var onGetCurrentPositionError = function(error) {
+    console.log("Couldn't get geo coords from device");
+}

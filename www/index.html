@@ -11,17 +11,17 @@
         <link rel="stylesheet" type="text/css" href="css/core.css" />
 
         <script type="text/javascript" src="../platforms/android/platform_www/cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">app.initialize();</script>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.ui.min.js"></script>
-         <script type="text/javascript" src="js/jquery.ui-punch.min.js"></script>
+        <script type="text/javascript" src="js/jquery.ui-punch.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">app.initialize();</script>
         <script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/jscroll.js"></script>
         <script type="text/javascript" src="js/lazyload.js"></script>
         <script type="text/javascript" src="js/frontend.js"></script>
         <script type="text/javascript" src="js/backend.js"></script>
-
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
         <title>ImmoFinder</title>
     </head>
     <body>
@@ -41,10 +41,10 @@
                 <!--- Start Suche --->
                 <div class="tab-pane animated fadeIn active" id="search-start">
 					<div style="padding: 20px" class="center-block">
-				        <form method="get" action="" id="search-form">
+                        <form method="get" action="" id="search-form">
 					        <div class="input-group marginbottom10">
-					            <span class="input-group-addon"><strong>Wo:</strong></span>
 					            <input type="text" class="form-control own-control typeahead" name="search-where" placeholder="ORT / PLZ" value="" required/>
+                                <span class="input-group-addon" style="border: none"><span class="glyphicon glyphicon-map-marker get-location"></span></span>
 					        </div>
 					
 					        <input type="text" id="radius" name="search-radius" class="form-control text-right" style="width: 100%; color: darkred; border: none; font-weight: bold;  box-shadow: none; margin-bottom: 5px"></span>

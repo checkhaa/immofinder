@@ -27,6 +27,10 @@
                         {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -71,6 +75,9 @@
             "PACKAGE_NAME": "de.checkzz.immofinder"
         },
         "org.apache.cordova.console": {
+            "PACKAGE_NAME": "de.checkzz.immofinder"
+        },
+        "org.apache.cordova.dialogs": {
             "PACKAGE_NAME": "de.checkzz.immofinder"
         }
     },

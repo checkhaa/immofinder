@@ -98,6 +98,20 @@ module.exports = [
         "clobbers": [
             "console"
         ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.dialogs/www/notification.js",
+        "id": "org.apache.cordova.dialogs.notification",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.dialogs/src/windows8/NotificationProxy.js",
+        "id": "org.apache.cordova.dialogs.NotificationProxy",
+        "merges": [
+            ""
+        ]
     }
 ];
 module.exports.metadata = 
@@ -109,7 +123,8 @@ module.exports.metadata =
     "org.apache.cordova.geolocation": "0.3.7",
     "org.apache.cordova.globalization": "0.2.7",
     "org.apache.cordova.splashscreen": "0.3.0",
-    "org.apache.cordova.console": "0.2.8"
+    "org.apache.cordova.console": "0.2.8",
+    "org.apache.cordova.dialogs": "0.2.7"
 }
 // BOTTOM OF METADATA
 });

@@ -9,9 +9,10 @@
         Ahmet Guerer
     </author>
 
-    <preference name="DisallowOverscroll" value="true"/>
-    <preference name="loglevel" value="DEBUG" />
+    <content src="index.html" />
+    <access origin="*" />
 
+    <preference name="DisallowOverscroll" value="true"/>
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
@@ -20,6 +21,9 @@
     </feature>
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
     </feature>
     <feature name="Battery">
         <param name="android-package" value="org.apache.cordova.batterystatus.BatteryListener" />
@@ -30,6 +34,4 @@
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
     </feature>
-    <content src="index.html" />
-    <access origin="*" />
 </widget>
