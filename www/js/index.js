@@ -22,7 +22,7 @@ var app = {
 
     // Update DOM on a Received Event
     receivedEvent: function() {
-
+        alert(1);
         geocoder = new google.maps.Geocoder();
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
@@ -75,6 +75,8 @@ var app = {
             });
         }
 
+
+
         // onError Callback receives a PositionError object
         //
         function onError(error) {
@@ -83,4 +85,5 @@ var app = {
         }
 
     }
+
 };
