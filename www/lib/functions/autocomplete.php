@@ -1,8 +1,5 @@
 <?php
 // Datenbankverbindung holen
-include($_SERVER['DOCUMENT_ROOT'].'/www/lib/classes/class.db.php');
-
-// Datenbankverbindung holen
 require_once($_SERVER['DOCUMENT_ROOT'].'/www/lib/functions/functions.php');
 
 // Datenbank initialisieren
