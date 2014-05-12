@@ -2,7 +2,6 @@
 $(function() {
     $( "#slider-range-min" ).slider({
         range: "min",
-        value: 5,
         min: 1,
         max: 50,
         slide: function( event, ui ) {

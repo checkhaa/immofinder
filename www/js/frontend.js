@@ -1,3 +1,4 @@
+/*
 $(document).ajaxStart(function(){
     $('.loader').show();
 });
@@ -5,17 +6,20 @@ $(document).ajaxStart(function(){
 $(document).ajaxStop(function(){
     $('.loader').hide(0);
 });
+*/
 
 // Menu Panel
 function open_menu_panel(){
     $('.menu-panel').removeClass('slideOutLeft');
     $('.menu-panel').addClass('fadeInLeft');
+    $('span#list').attr('style', 'left: 0px');
     $('.menu-panel').fadeIn();
 }
 
 function close_menu_panel(){
     $('.menu-panel').removeClass('fadeInLeft');
     $('.menu-panel').addClass('slideOutLeft');
+    $('span#list').attr('style', 'left: -5px');
     $('.menu-panel').fadeOut();
 }
 
@@ -116,4 +120,29 @@ $(function(){
 		history.pushState(null, null, '#search-list');
 		return false;
 	});
+});
+
+//---- Autocomplete funktion für die Orte -----
+$(function() {
+    var termTemplate = "<span class='ui-autocomplete-term'>%s</span>";
+    $('.typeahead').autocomplete({
+        source : 'http://immofinder.vmd3618.checkzz.de/www/lib/functions/autocomplete.php',
+        minLength : 1,
+        max : 20,
+        autoFocus: true,
+        open: function(e,ui) {
+            var
+                acData = $(this).data('uiAutocomplete'),
+                styledTerm = termTemplate.replace('%s', acData.term);
+
+            acData
+                .menu
+                .element
+                .find('a')
+                .each(function() {
+                    var me = $(this);
+                    me.html( me.text().replace(acData.term, styledTerm) );
+                });
+        }
+    });
 });
