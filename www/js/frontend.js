@@ -20,7 +20,6 @@ function close_menu_panel(){
 }
 
 $(function(){
-
     // Funktion für das ein und ausklappen der Menüleiste
     $('.menu-navbar a').click(function(){
         if($('.menu-panel').is(':visible')){
@@ -35,79 +34,86 @@ $(function(){
     $('html').click(function(){
         close_menu_panel();
     });
-
-    // Wenn im Panel eine Spezielle a Klasse geklickt wird
-    $('ul.nav li').click(function(){
-
-        $('ul.nav li').removeClass('active');
-        $(this).addClass('active');
-
-    });
 });
 
-// Beim zurückklicken auf die vorherige Seite springen
+// Zurückbutton einbinden
+$(document).ready(function() {
+	// add a hash to the URL when the user clicks on a tab
+	$('a[data-toggle="tab"]').on('click', function(e) {
+		history.pushState(null, null, $(this).attr('href'));
+	});
+	// navigate to a tab when the history changes
+	window.addEventListener("popstate", function(e) {
+		
+		var hash = window.location.hash;
+		if(hash == '#search-start'){
+			$('.tab-pane').removeClass('active');
+			$(hash).addClass('active');
+		} else if(hash == '#search-list'){
+			$('.tab-pane').removeClass('active');
+			$(hash).addClass('active');
+		}
+		
+		var activeTab = $('[href=' + location.hash + ']');
+		if (activeTab.length) {
+			activeTab.tab('show');
+		} else {
+			$('.nav-tabs a:first').tab('show');
+		}
+	});
+});
+
 $(function() {
-    $('a[data-toggle="tab"]').on('click', function(e) {
-        history.pushState(null, null, $(this).attr('href'));
-    });
-
-    // Wenn Window zurückgeklickt wird aktion ausführen
-    window.addEventListener("popstate", function(e) {
-
-        // Hole letzten Hash aus der URL
-        var hash = window.location.hash;
-
-        // Ermittle die Url von der Hash ID
-        var url = $(hash).attr('data-tab-url');
-
-        // Lösche alle aktiven Tabs
-        $('.tab-pane').removeClass('active');
-        $('.tab-pane').html('');
-
-        // Füge der Hash Div id die Klasse aktiv hinzu
-        $(hash).addClass('active');
-
-        // Wenn der div visible / angezeigt steht Führe Ajax Request aus
-        if($(hash).is(':visible')){
-
+	$('a[data-tab-url]').click(function(){
+			
+		var url = $(this).attr('data-tab-url');
+		var tabDiv = $(this).attr('href');
+				
+		if($(tabDiv).is(':visible')){
+			return false;
+		} else {
             // Führe das Request aus
             $.ajax({
                 url : url,
                 success : function(data){
-                    $(hash).html(data);
+                    $(tabDiv).html(data);
                 }
             });
-        } else {
-            return false;
-        }
-    });
+		}
+	});
 });
 
-// Mit der GPS Funktion lat und lon werte holen
-var getLocation = function() {
-    var suc = function(p) {
-        alert(p.coords.latitude + " " + p.coords.longitude);
-    };
-    var locFail = function() {
-    };
-    navigator.geolocation.getCurrentPosition(suc, locFail);
-};
-
-
-// Beim Starten der Anwendung erste Seite laden
+// Beim aufrufen des Apps hashtag für die Startseite hinzufügen
 $(function(){
+	if($('#search-start').is(':visible')){
+		history.pushState(null, null, '#search-start');
+	} else {
+		return false;
+	}
+});
 
-    // Container Variable ermitteln
-    var containerId = '#search-start';
+$(function(){
+	$('form#search-form').submit(function(){
+        
+        var url = 'http://immofinder.vmd3618.checkzz.de/www/page/page.search-list.php';
+        var tabDiv = '#search-list';
+        var radius = $('input#radius').val();
+        var radius_arr = radius.split(" ");
+        var data = 'search-where='+$('input[name=search-where]').val()+'&search-radius='+radius_arr[1]+'&search-what='+$('input[name=search-what]').attr('id')+'';
+		
+		$('.tab-pane').removeClass('active');
+		$(tabDiv).addClass('active');
 
-    // Url ermitteln
-    var url = 'http://immofinder.vmd3618.checkzz.de/www/page/page.search-start.php';
+        // Führe das Request aus
+        $.ajax({
+            url : url,
+            data : data,
+            success : function(data){
+                $(tabDiv).html(data);
+            }
+        });
 
-    // Führe Ajax Request
-    $.ajax({
-        url : url,
-        success : function(data){
-            $(containerId).html(data);
-        }
-    });
+		history.pushState(null, null, '#search-list');
+		return false;
+	});
 });

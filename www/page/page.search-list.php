@@ -15,8 +15,18 @@ $oImmocaster->setRequestUrl('live');
 // Initialisiere Seite
 $pageNumber = ($_GET['page_number'] ? $_GET['page_number'] : '1');
 
+$search_where = $_GET['search-where'];
+$search_where = explode("-", $search_where);
+
+$url = "http://maps.google.com/maps/api/geocode/json?address=".urlencode($search_where[0])."+".urlencode($search_where[1])."&sensor=false&region=DE";
+$response = file_get_contents($url);
+$response = json_decode($response, true);
+
+$lat = $response['results'][0]['geometry']['location']['lat'];
+$long = $response['results'][0]['geometry']['location']['lng'];
+
 // Objekte holen
-$aParameter = array('geocoordinates'=>'50.0954;12.2196;30', 'realestatetype' => 'apartmentbuy', 'pagenumber' => $pageNumber);
+$aParameter = array('geocoordinates'=>' '.$lat.';'.$long.';'.$_GET['search-radius'].' ', 'realestatetype' => 'apartmentbuy', 'pagenumber' => $pageNumber);
 $res        = $oImmocaster->radiusSearch($aParameter);
 $array = xmlstr_to_array($res);
 
@@ -44,9 +54,9 @@ echo '<div class="scroll">';
         $replace_picture = str_replace($search_pic, $replace_with, $picture);
 
         echo '
-                <div class="col-md-6" id="mode" style="margin-bottom: 10px; margin-top: 10px">
+                <div class="col-md-6 animated" id="mode" style="margin-bottom: 10px; margin-top: 10px">
                     <div class="immo-features" style=""><span style="font-size: 13px; font-weight: bold">'.sub_string($titel, 20).'</span></div>
-                    '.($replace_picture ? '<img src="'.$replace_picture.'" style="width: 100%; border-top: 1px solid black">' : '<img src="http://immofinder.vmd3618.checkzz.de/www/img/no-pic.jpg" style="width: 100%;  border-top: 1px solid black"/>').'
+                    '.($replace_picture ? '<img class="lazy" src="'.$replace_picture.'" data-original="" style="width: 100%; border-top: 1px solid black">' : '<img src="http://immofinder.vmd3618.checkzz.de/www/img/no-pic.jpg" style="width: 100%;  border-top: 1px solid black"/>').'
                 </div>
              ';
     }
@@ -65,7 +75,7 @@ echo '<div class="scroll">';
                 </script>
              ";
 
-        echo '<div class="center-block text-center" style="width: 100%"><a class="btn btn-primary" href="http://immofinder.vmd3618.checkzz.de/www/page/page.search-list.php?page_number='.$getPage.'">Weitere Immobilien laden</a></div>';
+        echo '<div class="center-block text-center" style="width: 100%"><a class="btn btn-primary" href="http://immofinder.vmd3618.checkzz.de/www/page/page.search-list.php?search-what='.$_GET['search-what'].'&search-radius='.$_GET['search-radius'].'&search-where='.urlencode($_GET['search-where']).'&page_number='.$getPage.'">Weitere Immobilien laden</a></div>';
     }
 
 echo '</div>';

@@ -4,13 +4,11 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
 
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="css/animate.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.ui.css" />
         <link rel="stylesheet" type="text/css" href="css/core.css" />
-
 
         <script type="text/javascript" src="../platforms/android/platform_www/cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
@@ -18,34 +16,53 @@
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.ui.min.js"></script>
         <script type="text/javascript" src="dist/js/bootstrap.min.js"></script>
-         <script type="text/javascript" src="js/jscroll.js"></script>
+        <script type="text/javascript" src="js/jscroll.js"></script>
+        <script type="text/javascript" src="js/lazyload.js"></script>
         <script type="text/javascript" src="js/frontend.js"></script>
+        <script type="text/javascript" src="js/backend.js"></script>
 
         <title>ImmoFinder</title>
     </head>
     <body>
         <div class="menu-navbar">
-            <div class="pull-left"><a href="#"><span class="glyphicon glyphicon glyphicon-th-list open"></span></a></div>
-            <div class="menu-title">Startseite</div>
+            <div class="pull-left menu-a-tag"><a href="#"><span class="glyphicon glyphicon glyphicon-th-list open"></span></a></div>
+            <div class="menu-title">Suche</div>
         </div>
         <div class="menu-panel animated">
             <ul class="nav">
-                <li class="active"><a href="#search-start" id="specialA" data-url="http://immofinder.vmd3618.checkzz.de/www/page/page.search-start.php"><span class="glyphicon glyphicon-search marginright10"></span>Suche</a></li>
-                <li><a href="#search-saved" id="specialA" data-url="http://immofinder.vmd3618.checkzz.de/www/page/page.search-saved.php"><span class="glyphicon glyphicon-bookmark marginright10"></span>Gespeicherte Suchen</a></li>
+                <li class="active"><a href="#search-start" data-toggle="tab"><span class="glyphicon glyphicon-search marginright10"></span>Suche</a></li>
+                <li><a href="#search-saved" data-toggle="tab" data-tab-url="http://immofinder.vmd3618.checkzz.de/www/page/page.search-saved.php"><span class="glyphicon glyphicon-bookmark marginright10"></span>Gespeicherte Suchen</a></li>
             </ul>
         </div>
 
         <div class="clearfix margintop53"></div>
-
             <div class="tab-content">
                 <!--- Start Suche --->
-                <div class="tab-pane animated fadeIn active" id="search-start" data-tab-url="http://immofinder.vmd3618.checkzz.de/www/page/page.search-start.php"></div>
+                <div class="tab-pane animated fadeIn active" id="search-start">
+					<div style="padding: 20px" class="center-block">
+				        <form method="get" action="" id="search-form">
+					        <div class="input-group marginbottom10">
+					            <span class="input-group-addon"><strong>Wo:</strong></span>
+					            <input type="text" class="form-control own-control" name="search-where" placeholder="ORT / PLZ" value="" required/>
+					        </div>
+					
+					        <input type="text" id="radius" name="search-radius" class="form-control center-block" style="width: 150px; border: none; font-weight: bold;  box-shadow: none; margin-bottom: 5px"></span>
+					        <div id="slider-range-min"></div><br />
+					
+					        <div class="input-group marginbottom10">
+					            <span class="input-group-addon"><strong>Was:</strong></span>
+					            <input type="text" class="form-control own-control" id="apartmentbuy" name="search-what" value="Wohnung kaufen" placeholder="" />
+					        </div>
+							<input type="submit" name="get-search" class="btn btn-success center-block" value="Finden" />
+						</form>
+					</div>
+                </div>
 
                 <!--- Gespeicherte Suche --->
-                <div class="tab-pane animated fadeIn" id="search-saved" data-tab-url="http://immofinder.vmd3618.checkzz.de/www/page/page.search-saved.php"></div>
+                <div class="tab-pane animated fadeIn" id="search-saved"></div>
 
                 <!--- Suche Listing --->
-                <div class="tab-pane animated fadeIn" id="search-list" data-tab-url="http://immofinder.vmd3618.checkzz.de/www/page/page.search-list.php"></div>
+                <div class="tab-pane animated fadeIn" id="search-list"></div>
 
                 <div class="center-block text-center loader" style="width: 100%"><img src="http://immofinder.vmd3618.checkzz.de/www/img/loading.gif" /> <br /> <strong>WIRD GELADEN...</strong></div>
             </div>

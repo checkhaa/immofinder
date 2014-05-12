@@ -162,7 +162,12 @@ div.ui-loader {
 }
 
 .loader {
-    margin-top: 10px;
-    margin-bottom: 10px;
     display: none;
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    bottom: 0px;
+    padding: 10px;
+    border-top: 1px solid black;
+    box-shadow: 0 0 5px #888;
 }
