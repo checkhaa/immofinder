@@ -199,7 +199,7 @@ var onGetCurrentPositionSuccess = function(position) {
 
                     $('input[name=search-where]').val(postal_code + ' ' + street + ' ' + street_number + ' ' + city );
 
-                    return false;
+
                 });
             } else {
                 alert("Ort nicht gefunden");
