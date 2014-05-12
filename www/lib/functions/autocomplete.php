@@ -1,6 +1,6 @@
 <?php
 // Datenbankverbindung holen
-include('http://immofinder.vmd3618.checkzz.de/www/lib/classes/class.db.php');
+include($_SERVER['DOCUMENT_ROOT'].'/www/lib/classes/class.db.php');
 
 // Datenbankverbindung holen
 require_once($_SERVER['DOCUMENT_ROOT'].'/www/lib/functions/functions.php');
